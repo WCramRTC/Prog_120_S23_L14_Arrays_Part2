@@ -7,6 +7,7 @@
 
             // Ask the user how many products they would like? ( asking for the size of the array )
             // Ask the user for the name of each product ( looping and assigning the users values )
+            // -- Now we discuss our parallel arrays
             // Ask the user for a price of each product ( looping and assigning a value to a different array )
             // Sum the total of all the products
 
@@ -19,6 +20,7 @@
             // what type would name be
             // anytime I'm asking for multiple of something, it's usually in an array
             string[] products = new string[numberOfProducts];
+            double[] productPrice = new double[numberOfProducts];
 
             int index = 0;
 
@@ -27,13 +29,45 @@
                 Console.Write($"Enter the name for product {index}: ");
                 products[index] = Console.ReadLine();
 
+                Console.Write("Please enter the price: ");
+                productPrice[index] = double.Parse(Console.ReadLine());
+
+
                 index++;
             }
 
-            // Testing to see the product was saved by displaying the first item
-            Console.WriteLine(products[0]);
 
+            // Print the entire list of product
+            Console.WriteLine("The current menu");
+            index = 0;
 
+            while(index < products.Length)
+            {
+                // Name - Price: price
+                string name = products[index];
+                double price = productPrice[index];
+
+                Console.WriteLine($"{name} - Price: {price.ToString("c")}");
+                index++;
+            }
+
+            // Sum up the total of our menu
+            index = 0;
+
+            double total = 0;
+
+            while(index < products.Length)
+            {
+                total += productPrice[index];
+                index++;
+            }
+
+            // sum of elements / number of elements
+
+            double average = total / productPrice.Length;
+
+            Console.WriteLine("The sum of all the products is " + total.ToString("c"));
+            Console.WriteLine("The average of all the products is " + average.ToString("c"));
 
         } // Main
 
